@@ -1,0 +1,2 @@
+terrasnek==v0.1.10
+jproperties==2.1.1

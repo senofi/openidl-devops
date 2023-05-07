@@ -1,0 +1,79 @@
+---
+apiVersion: awx.ansible.com/v1beta1
+kind: AWX
+metadata:
+  name: awx
+spec:
+  secret_key_secret: awx-secret-key
+  service_type: ClusterIP
+  ingress_type: ingress
+  ingress_class_name: nginx
+#  ingress_path: awx
+#  ingress_annotations: |
+#    nginx.ingress.kubernetes.io/proxy-http-version: "1.1"
+#    nginx.ingress.kubernetes.io/proxy-read-timeout: "1800"
+#    nginx.ingress.kubernetes.io/proxy-send-timeout: "1800"
+  service_annotations: |
+    environment: dev
+  service_labels: |
+    environment: dev
+  postgres_configuration_secret: awx-postgres-configuration
+  ee_extra_env: |
+    - name: RECEPTOR_KUBE_SUPPORT_RECONNECT
+      value: disabled
+
+#  web_resource_requirements:
+#    requests:
+#      cpu: 250m
+#      memory: 100Mi
+#    limits:
+#      cpu: 250m
+#      memory: 200Mi
+#  task_resource_requirements:
+#    requests:
+#      cpu: 250m
+#      memory: 100Mi
+#    limits:
+#      cpu: 250m
+#      memory: 200Mi
+#  ee_resource_requirements:
+#    requests:
+#      cpu: 250m
+#      memory: 100Mi
+#    limits:
+#      cpu: 250m
+#      memory: 200Mi
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: awx-postgres-configuration
+  namespace: awx
+stringData:
+  host: <db-host>
+  port: '5432'
+  database: awx
+  username: awxuser
+  password: <password>
+  sslmode: prefer
+  type: unmanaged
+type: Opaque
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: awx-admin-password
+  namespace: awx
+stringData:
+  password: <password>
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: awx-secret-key
+  namespace: awx
+stringData:
+  secret_key: <secret-key>

@@ -1,0 +1,8 @@
+project: "testnet"
+org_name: "<org>"
+public_domain: "<org>.<project.openidl.org"
+#workspace_name: "<project>-<env>-ops"
+aws_role_arn: arn:aws:iam::<aws-account>:role/tf_automation
+aws_access_key: AKIA...
+aws_secret_key: PHff...
+aws_external_id: terraform

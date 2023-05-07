@@ -1,0 +1,2 @@
+ingressClassByName: true
+ingressClass: nginx-external
