@@ -1,9 +1,9 @@
 resource "awx_organization" "default" {
-  name = "${var.org_name}-org"
+  name = "${var.org_id}-org"
 }
 
-resource "awx_project" "default" {
-  name                 = "${var.org_name}-project"
+resource "awx_org_id" "default" {
+  name                 = "${var.org_id}-org_id"
   scm_type             = "git"
   scm_url              = var.git_url
   scm_branch           = var.git_branch
@@ -17,7 +17,7 @@ resource "awx_team" "default" {
 
 resource "awx_host" "bastion" {
   name         = var.bastion_host
-  description  = "Bastion host for ${var.org_name}"
+  description  = "Bastion host for ${var.org_id}"
   inventory_id = awx_inventory.default.id
   enabled      = true
 #  variables = <<YAML
@@ -27,6 +27,6 @@ resource "awx_host" "bastion" {
 }
 
 resource "awx_inventory" "default" {
-  name            = "${var.org_name}-inventory"
+  name            = "${var.org_id}-inventory"
   organization_id = awx_organization.default.id
 }

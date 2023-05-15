@@ -1,8 +1,17 @@
-project: "testnet"
-org_name: "<org>"
-public_domain: "<org>.<project.openidl.org"
-#workspace_name: "<project>-<env>-ops"
-aws_role_arn: arn:aws:iam::<aws-account>:role/tf_automation
-aws_access_key: AKIA...
-aws_secret_key: PHff...
-aws_external_id: terraform
+org_id: "<org-id>"
+env: "<env>"
+tf_org: "<TFC-org-ID>"
+
+ops_tools_db_password: "<db-password>"
+
+# IAM Modul AWS User
+iam: 
+  aws_access_key: AK...
+  aws_secret_key: 8+6...
+
+# Terraform Automation User
+terraform:
+  aws_external_id: terraform
+  aws_role_arn: arn:aws:iam::<aws-account-number>:role/tf_automation
+  aws_access_key: AKIA...
+  aws_secret_key: 9Mq...

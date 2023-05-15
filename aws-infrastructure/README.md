@@ -18,9 +18,9 @@ Make sure that the values in org-vars.yaml are updated as per the environment.
 The script creates three workspaces - one for the AWS resources, one for the Kubernetes resources and one for the operational applications such as Jenkins and AWX.
 The names follow the patterns:
 ```
-<project>-<org>-aws-resources
-<project>-<org>-k8s-resources
-<project>-<org>-ops
+<org_id>-<env>-aws-resources
+<org_id>-<env>-k8s-resources
+<org_id>-<env>-ops
 ```
 
 1. Set up the Terraform Cloud credentials 

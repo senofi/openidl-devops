@@ -1,5 +1,5 @@
 resource "awx_credential" "aws-user" {
-  name = "${var.org_name}-aws-credentials"
+  name = "${var.org_id}-aws-credentials"
   description = "AWS user credentials"
   organization_id = awx_organization.default.id
   credential_type_id = awx_credential_type.aws_credentials.id
@@ -12,7 +12,7 @@ resource "awx_credential" "aws-user" {
 }
 
 resource "awx_credential" "github_ssh_key_and_url" {
-  name = "${var.org_name}-Git-Config"
+  name = "${var.org_id}-Git-Config"
   description = "Git configuration"
   organization_id = awx_organization.default.id
   credential_type_id = awx_credential_type.openidl_config_git_repo.id
@@ -24,7 +24,7 @@ resource "awx_credential" "github_ssh_key_and_url" {
 }
 
 resource "awx_credential" "openidl-app" {
-  name = "${var.org_name}-app-config"
+  name = "${var.org_id}-app-config"
   description = "openIDL Applications config"
   organization_id = awx_organization.default.id
   credential_type_id = awx_credential_type.openidl-app.id
@@ -38,7 +38,7 @@ resource "awx_credential" "openidl-app" {
 
 resource "awx_credential_machine" "bastion" {
   organization_id = awx_organization.default.id
-  name = "${var.org_name}-bastion"
+  name = "${var.org_id}-bastion"
   username = var.bastion_username
   ssh_key_data = var.bastion_ssh_key
 

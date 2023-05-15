@@ -1,3 +1,3 @@
-variable "org_name" {}
-variable "project" {}
-variable "tfc_organization" {}
+variable "org_id" {}
+variable "env" {}
+variable "tf_org" {}

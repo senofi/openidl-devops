@@ -1,4 +1,4 @@
-variable "org_name" {
+variable "org_id" {
   type = string
   description = "Organization name"
 }

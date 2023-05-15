@@ -1,10 +1,11 @@
-locals {
-  workspace_name = "testnet-openidl-ops"
 
+locals {
+  # Load variables
+  common = yamldecode(file(find_in_parent_folders("org-vars.yaml")))
+  local = yamldecode(file("${get_terragrunt_dir()}/local-vars.yaml"))
 }
 
 inputs = {
-  ops_tools_db_password = "9%$oK3#NpNfIW#$"
 
   tags = {
     Network = "openIDL"
@@ -30,20 +31,20 @@ terraform {
 EOF
 }
 
-#generate "remote_state" {
-#  path      = "backend.tf"
-#  if_exists = "overwrite_terragrunt"
-#  contents = <<EOF
-#terraform {
-#  cloud {
-#    organization = "openIDL"
-#    workspaces {
-#      name = "${local.workspace_name}"
-#    }
-#  }
-#}
-#EOF
-#}
+generate "remote_state" {
+  path      = "backend.tf"
+  if_exists = "overwrite_terragrunt"
+  contents = <<EOF
+terraform {
+  cloud {
+    organization = "${local.common.tf_org}"
+    workspaces {
+      name = "${local.common.org_id}-${local.common.env}-${local.local.module}"
+    }
+  }
+}
+EOF
+}
 
 generate "tfvars" {
   path      = "terragrunt.auto.tfvars.json"

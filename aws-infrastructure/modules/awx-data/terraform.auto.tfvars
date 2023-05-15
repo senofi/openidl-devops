@@ -1,4 +1,4 @@
-org_name = "testorg"
+org_id = "testorg"
 
 git_url = "url1"
 git_branch = "branch1"

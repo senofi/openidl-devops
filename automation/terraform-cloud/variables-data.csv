@@ -1,9 +1,9 @@
 ﻿Required Input,Description,Sensitive,HCL,Template Value
 tfc_org_name,Name of the organization that owns the terraform cloud or enterprise when TFC or TFE is backend,no,no,${TFC_ORG}
-tfc_workspace_name_aws_resources,Name of the terraform workspace used for the aws resources when TFC or TFE is backend,no,no,${org_name}-${env_name}-aws-resources
-org_name,Up to six character name unique to the network,no,no,${org_name}
+tfc_workspace_name_aws_resources,Name of the terraform workspace used for the aws resources when TFC or TFE is backend,no,no,${org_id}-${env}-aws-resources
+org_id,Up to six character name unique to the network,no,no,${org_id}
 aws_env,Environment values can be dev | test | prod,no,no,test
-domain_info,A json object with values for r53_public_hosted_zone_required like domain_name sub_domain_name comments,no,yes,"{ r53_public_hosted_zone_required = ""yes"", domain_name = ""${org_name}.${env_name}.openidl.org"", sub_domain_name = """", comments = ""openIDL"" }"
+domain_info,A json object with values for r53_public_hosted_zone_required like domain_name sub_domain_name comments,no,yes,"{ r53_public_hosted_zone_required = ""yes"", domain_name = ""${org_id}.${env}.openidl.org"", sub_domain_name = """", comments = ""openIDL"" }"
 aws_account_number,AWS account number,no,no,${account_number}
 aws_access_key,IAM user access key - from the terraform user,yes,no,"${aws_access_key}"
 aws_secret_key,IAM user secret key - from the terraform user,yes,no,"${aws_secret_key}"
@@ -39,7 +39,7 @@ blk_eks_worker_nodes_ssh_key,SSH key for the user that runs the infrastructure a
 blk_cluster_map_users,Set to IAM users ARN to have access to EKS clusters,no,yes,[]
 blk_cluster_map_roles,Set to IAM roles to have access to EKS clusters,no,yes,[]
 create_cognito_userpool,Choose whether to provision Cognito userpool,no,no,true
-userpool_name,Some unique name for the user pool.,no,no,${org_name}
+userpool_name,Some unique name for the user pool.,no,no,${org_id}
 create_cloudtrail,Choose cloudtrail is required to enable,no,no,true
 s3_bucket_name_cloudtrail,Cloudtrail s3 bucket name,no,no,cloudtrail
 terraform_state_s3_bucket_name,S3 bucket name managing terraform state files when s3 backend is used,no,no, <not-used>
@@ -52,12 +52,12 @@ eks_kms_key_arn,KMS key ARN to encrypt EKS secrets,no,no,"${kms_key_arn}"
 cloudtrail_cw_logs_kms_key_arn, KMS key ARN to encrypt cloudwatch logs,no,no,"${kms_key_arn}"
 vpc_flow_logs_kms_key_arn,KMS key ARN to encrypt VPC flow logs,no,no,"${kms_key_arn}"
 secrets_manager_kms_key_arn,KMS key ARN to encrypt secrets,no,no,"${kms_key_arn}"
-s3_bucket_names_etl,List the buckets used for IDM-ETL function,no,yes,"{ ""idm-loader"" = ""openidl-${env_name}-${org_name}-etl-idm-loader"", ""intake"" = ""openidl-${env_name}-${org_name}-etl-intake"", ""failure"" = ""openidl-${env_name}-${org_name}-etl-error"" }"
-sns_subscription_email_ids,List the email Ids used for SNS notification for IDM-ETL,no,yes,"[""openidl+${env_name}.${org_name}@senofi.ca""]"
-api_username,Application API userID used to connect with utility/idm services,no,no,apiuser@${env_name}.${domain_name}
+s3_bucket_names_etl,List the buckets used for IDM-ETL function,no,yes,"{ ""idm-loader"" = ""openidl-${env}-${org_id}-etl-idm-loader"", ""intake"" = ""openidl-${env}-${org_id}-etl-intake"", ""failure"" = ""openidl-${env}-${org_id}-etl-error"" }"
+sns_subscription_email_ids,List the email Ids used for SNS notification for IDM-ETL,no,yes,"[""openidl+${env}.${org_id}@senofi.ca""]"
+api_username,Application API userID used to connect with utility/idm services,no,no,apiuser@${env}.${domain_name}
 api_user_password,Application API user password to authenticate utility and idm services,yes,no,<passwordhere>
 carrier_id,The Carrier ID that will be setup in the application,no,no,1235
 state,Name of the state in United States the node is used,no,no,ND
-custom_tags,Additional tags to include,no,yes,"{ node = ""openIDL"", network = ""${env_name}"", org = ""${org_name}"" }"
+custom_tags,Additional tags to include,no,yes,"{ node = ""openIDL"", network = ""${env}"", org = ""${org_id}"" }"
 s3_bucket_name_access_logs,S3 bucket name for access logs,no,no,openidl-access-logs
 s3_bucket_name_upload_ui,S3 Bucket for Upload UI,no,no,uploadui

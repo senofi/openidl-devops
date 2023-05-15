@@ -19,8 +19,8 @@ variable "region" {
   default = "us-east-2"
 }
 
-variable "public_domain" {
-}
+# variable "public_domain" {
+# }
 
 variable "domain_comment" {
   default = "Custom domain"
@@ -28,4 +28,13 @@ variable "domain_comment" {
 
 variable "ops_tools_db_password" {
   type = string
+}
+
+variable "org_id" {
+  type = string
+}
+
+variable "env" {
+  type = string
+  default = "test"
 }

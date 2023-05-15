@@ -1,9 +1,9 @@
 locals {
 
   tags = {
-    Network     = "TestNet"
+    Network     = var.org_id
     Project     = "openIDL"
-    Environment = "test"
+    Environment = var.env
   }
 }
 
