@@ -22,7 +22,8 @@ if __name__ == "__main__":
     api.set_org(TFC_ORG)
 
     var_set = None
-    var_sets = api.var_sets.list_for_org().get("data")
+    var_sets = api.var_sets.list_all_for_org().get("data")
+    # print(f'varsets: {var_sets}')
     for v in var_sets:
         if v['attributes']['name'] == VARSET_NAME:
             var_set = v
