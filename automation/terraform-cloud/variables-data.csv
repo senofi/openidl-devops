@@ -16,8 +16,8 @@ email_sending_account,Set to COGNITO_DEFAULT,no,no,COGNITO_DEFAULT
 ses_email_identity,"Leave blank if sending account is ""COGNITO_DEFAULT""",no,no,
 userpool_email_source_arn,"Leave blank if sending account is ""COGNITO_DEFAULT""",no,no,
 app_cluster_name,app-cluster,no,no,app-cluster
-app_cluster_version,e.g. 1.23,no,no,1.24
-app_worker_nodes_ami_id,identify AMI id for that region and mention according to cluster version,no,no,ami-0f5121e301f63ead2
+app_cluster_version,e.g. 1.28,no,no,1.28
+app_worker_nodes_ami_id,identify AMI id for that region and mention according to cluster version,no,no,ami-0a728a56442124f5c
 app_eks_worker_nodes_ssh_key,SSH key for the user that runs the infrastructure as code,yes,no,
 app_cluster_map_users,Set to IAM users ARN to have access to EKS clusters,no,yes,[]
 app_cluster_map_roles,Set to IAM roles to have access to EKS clusters,no,yes,[]
@@ -33,8 +33,8 @@ bastion_ssh_key,SSH key for the user that runs the infrastructure as code,yes,no
 bastion_sg_ingress,Inbound SSH rules,no,yes,"[{rule=""ssh-tcp"", cidr_blocks = ""0.0.0.0/0""}]"
 bastion_sg_egress,Outbound SSH rules,no,yes,"[{rule=""ssh-tcp"", cidr_blocks = ""0.0.0.0/0""}]"
 blk_cluster_name,blk-cluster,no,no,blk-cluster
-blk_cluster_version,e.g. 1.23,no,no,1.24
-blk_worker_nodes_ami_id,Identify AMI id for that region and mention based on cluster version,no,no,ami-0f5121e301f63ead2
+blk_cluster_version,e.g. 1.28,no,no,1.28
+blk_worker_nodes_ami_id,Identify AMI id for that region and mention based on cluster version,no,no,ami-0a728a56442124f5c
 blk_eks_worker_nodes_ssh_key,SSH key for the user that runs the infrastructure as code,yes,no,
 blk_cluster_map_users,Set to IAM users ARN to have access to EKS clusters,no,yes,[]
 blk_cluster_map_roles,Set to IAM roles to have access to EKS clusters,no,yes,[]
