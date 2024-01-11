@@ -2,7 +2,7 @@
 tfc_org_name,Name of the organization that owns the terraform cloud or enterprise when TFC or TFE is backend,no,no,${TFC_ORG}
 tfc_workspace_name_aws_resources,Name of the terraform workspace used for the aws resources when TFC or TFE is backend,no,no,${org_id}-${env}-aws-resources
 org_name,Up to six character name unique to the network,no,no,${org_id}
-aws_env,Environment values can be dev | test | prod,no,no,test
+aws_env,Environment values can be dev | test | prod,no,no,${env}
 domain_info,A json object with values for r53_public_hosted_zone_required like domain_name sub_domain_name comments,no,yes,"{ r53_public_hosted_zone_required = ""yes"", domain_name = ""${org_id}.${env}.openidl.org"", sub_domain_name = """", comments = ""openIDL"" }"
 aws_account_number,AWS account number,no,no,${account_number}
 aws_access_key,IAM user access key - from the terraform user,yes,no,"${aws_access_key}"
